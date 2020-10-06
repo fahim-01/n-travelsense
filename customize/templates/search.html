@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+    <title>Best Travel Agency</title>
+      <style>
+
+    .header
+    {
+      height: 100vh;
+      background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/media/images/about.jpg);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+    h1{
+      color: #fff;
+      margin-bottom: 70px;
+      font-size: 45px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .search-field{
+      height: 50px;
+      padding:10px;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      text-align: center;
+      
+
+    }
+    .business{
+      width: 400px;
+    }
+    .search-btn{
+       width: 150px;
+       height: 50px;
+       background:#ffeb3b;
+       border: none;
+       border-radius: 25px;
+       color: #000;
+
+    }
+    .search-btn:hover{
+      background:#ffc107;
+      cursor: pointer;
+    }
+    .from-box{
+      background: rgba(0,0,0,0.5);
+      padding:30px;
+    }
+        
+        .col-md-3
+     {
+  display: inline-block;
+  margin-left:-4px;
+ 
+  }
+  .carousel-indicators .active {
+  background-color:  black;
+  }
+ .col-md-3 img{
+ width: 300px;
+ height: 250px;
+ padding-left: 9px;
+ }
+ body .carousel-indicator li{
+ background-color: black;
+ }
+ body .carousel-indicators{
+ bottom: 0;
+ }
+ body .carousel-control-prev-icon,
+ body .carousel-control-next-icon{
+ background-color: black;
+ }
+ .carousel-control-prev,
+ .carousel-control-next{
+ top: auto;
+ bottom: auto;
+ padding-top: 222px;
+ }
+ body .no-padding{
+ padding-left: 0;
+ padding-right: 0;
+ }
+
+ 
+
+ body {
+  font-family: Arial;
+}
+
+ * {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid green;
+  float: left;
+  width: 80%;
+  background:lightblue;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  height: 150%;
+  padding: 5px;
+  background: rgb(0, 87, 128);
+  color: darkred;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: green;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+        
+</style>
+  </head>
+  <body>
+  {% load static %}
+    <nav class="navbar navbar-expand-lg" style="background-color: rgb(0, 87, 128);">
+     
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"style="color:black"><b>TravelSense</b> <span class="sr-only">(current)</span></a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/about" style="color:black"><b>About Us</b></a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="/contact"style="color:black"><b>Contact Us</b></a>
+          </li>
+          {% endif %}
+             
+        </ul>
+       
+     
+     
+          
+      {% if user.is_authenticated %}
+      <ul>
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">
+          <b>
+            Welcome {{request.user}}
+          </b>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/logout">Logout</a>
+            
+        </li>
+      </ul>
+      
+     
+      {% else %}
+      <!-- Button to trigger login modal -->
+      <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal">
+      logIn
+      </button>
+      <!-- Button to trigger SignUp modal -->
+      <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#signupModal">
+      SignUp
+      </button>
+      {% endif %}
+        
+      </div>                                                                                                                                                                                                 
+    </nav>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>Message: </strong> {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+   {% endfor %}
+
+<!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">SignUp here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='/signup' method='post'> 
+        
+          <div class="form-group">
+            <label for="exampleFormControlInput1">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last  Name">
+          </div>
+          <div class="form-group">
+            <label for="username">UserName</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique UserName" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Confirm Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Password" required>
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">SignUp</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+     
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">login here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method='POST'>
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">UserName</label>
+            <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Choose a unique UserName" required>
+          </div>
+        
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Choose Your Password" required>
+          </div>
+         
+        
+          <button type="submit" class="btn btn-primary">LogIn</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+     
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--Main Body-->
+<div class="header">
+  <form>
+    <h1 style="color: darkseagreen;">Plan Your Trip</h1>
+    <div class="from-box">
+     
+  <form class="example" method="get" action="/search/" >
+    
+    <input type="text" class="search-field business" placeholder="Search.." name="search">
+    <button type="submit"  class="search-btn" style="height: 48px; color: rgb(95, 7, 7);"><b>Search </b><i class="fa fa-search" style="padding-top: 5%;"></i></button>
+  </form>
+</div>
+</form>
+</div>
+
+    
+  
+
+
+
+
+
+        <div class="container"> 
+       <!--Slideshow starts here -->
+        {% for destination, range, nSlides in allProds %}
+    <h2 class="my-4">{{destination.0.category}}</h2>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators" style="margin-bottom: 0rem;">
+                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul> 
+         
+        <div class="container carousel-inner no-padding">
+
+        <div class="carousel-item active">
+
+          {% for i in destination %}
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="card align-items-center" style="width: 18rem;">
+              <img src="/media/{{i.image}}"  class="card-img-top" alt="..." >
+              <div class="card-body">
+                                <h5 class="card-title" id="namepr{{i.id}}">{{i.Destination_name}}</h5>
+                                <h5 class="card-price" style="color: black;">BDT <span  id="pricepr{{i.id}}" >{{i.price}}</span></h5>
+                                 <p class="card-text">{{i.desc|slice:"0:20"}}....</p>
+
+                              {% if user.is_authenticated %} 
+                              <a href="/destinations/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-info" style="color: rgb(77, 2, 12);">Details</button></a>
+                              {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+            <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- Footer -->
+<footer class="page-footer  "  style="padding-top: 8%;">
+
+  <div style="background-color: rgb(72, 73, 73);">
+    <!-- Footer Elements -->
+<div class="container">
+
+  <!--Grid row-->
+  <div class="row" style="padding-top: 2%;">
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-12 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-6 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(78).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-6 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(79).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-12 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(81).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-6 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(82).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-2 col-md-6 mb-4">
+
+      <!--Image-->
+      <div class="view overlay z-depth-1-half">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(84).jpg" class="img-fluid"
+          alt="">
+        <a href="">
+          <div class="mask rgba-white-light"></div>
+        </a>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+</div>
+<!-- Footer Elements -->
+
+<!-- Copyright -->
+
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">TravelSense</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Planning a trip today can be confusing and time consuming. A travel advisor not only arranges the various modes of transportation, but may also be able to save you money with early booking discounts, special fares, hotel deals and travel advisories.</p>
+
+      </div>
+      <!-- Grid column -->
+
+    
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Social Network</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="https://www.facebook.com/mdfahimur.rosid/"><b>facebook</b></a>
+        </p>
+        <p>
+          <a href="https://www.instagram.com/f_a_h_i_m_ur/?hl=en"><b>Instagram</b></a>
+        </p>
+        <p>
+          <a href="https://github.com/fahim-01"><b>GitHub</b></a>
+        </p>
+       {% if user.is_authenticated %}
+        <p>
+          <a href="/about"><b>About Us</b></a>
+        </p>
+        {% endif %}
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <a href="/contact.html"><b>Contact Us</b></h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p> <b>Eastern Plaza, Gulshan, Dhaka</b></p>
+        <p><b>fahim.sust.edu@gmail.com </b></p>
+        <p><b> +8801778346462</b></p>
+        
+    <div class="col-lg-2 col-md-6 mb-4">
+
+      <!--Image-->
+      <div class="view overlay">
+        <img src="/media/images/dev.jpg">
+          <div class="mask rgba-white-light"></div>
+        
+      </div>
+
+    </div>
+    <p><b>CEO of TravelSense</b></p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+  
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://www.facebook.com/mdfahimur.rosid/"> Fahimur Rashid</a>
+  </div>
+  <!-- Copyright -->
+</div>
+
+</footer>
+<!-- Footer -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   {% block js %} {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %} Booking US {% endblock %} 
+{% block body %} 
+
+<div class="container">
+    <div class="col my-4">
+        <h2 style="text-align:center; font-size: 5rem; color: green;"><b> Plan Your Trip </b></h2>
+        <div class="my-4">
+            <ul class="list-group" id="items">
+            </ul>
+
+            <nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item active" aria-current="page" style="color:darkred"><b>Planning a trip today can be confusing and time consuming. A travel advisor not only arranges the various modes of transportation, but may also be able to save you money with early booking discounts, special fares, hotel deals and travel advisories.Pick your passion and leave the rest to the experts.</b></li>
+  </ol>            
+    </div>
+    </div>
+
+    
+<div class="container my-4">
+    <h2>Please Enter Your Details:</h2> 
+    <form method="post" action="/booking/">{% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputname"><b>Name</b></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4"><b>Email</b></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDeparture"><b>Departure</b></label>
+                <input type="text" class="form-control" id="departure" name="departure">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputDestination"><b>Destination</b></label>
+                <input type="text" class="form-control" id="destination" name="destination"  placeholder="Enter Destination">
+            </div>
+       
+            <div class="form-group col-md-2">
+                <label for="inputGuests"><b>Number Of Guests</b></label>
+                <input type="text" class="form-control" id="number_of_guests" name="number_of_guests">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name"><b>Phone</b></label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone number">
+        </div>
+        <div class="form-group">
+            <label for="desc" style="font-size: 1rem;"><b>Plan Your Trip</b></label>
+            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success"><b>Registered</b></button>
+        
+
+       
+      </form>
+</div>
+
+  
+{% endblock %} 
+{% block js %}
+<script>
+{% if thank %}
+alert('Thanks for Booking us. We will get Contact you as soon as possible!');
+
+document.location = "/";
+{% endif %}
+</script>
+{% endblock %} 

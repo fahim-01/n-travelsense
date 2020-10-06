@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block title %} Contact US {% endblock %} 
+{% block body %} 
+<div class="container ">
+    <img src="/media/images/contact1.jpg" width="1050px" height="600px">
+    <h3 style="text-align: center; color: green; padding-top: 4%;"><b>Contact Us Regarding any Query</b></h3> 
+    <form action="/contact/" method="POST"> {% csrf_token %}
+        <div class="form-group">
+          <label for="name"><b>Name</b></label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your name">
+        </div>
+        <div class="form-group">
+            <label for="name"><b>Email</b></label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Your email">
+          </div>
+        
+        <div class="form-group">
+            <label for="name"><b>Phone</b></label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone number">
+        </div>
+        <div class="form-group">
+            <label for="desc"><b>How May We Help You?</b></label>
+            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        
+
+       
+      </form>
+</div>
+<!-- Footer -->
+<footer class="page-footer  "  style="padding-top: 8%;">
+
+    <div style="background-color: rgb(72, 73, 73);">
+      <!-- Footer Elements -->
+  <div class="container">
+
+    <!--Grid row-->
+    <div class="row" style="padding-top: 2%;">
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-12 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-6 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(78).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-6 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(79).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-12 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(81).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-6 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(82).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-6 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half">
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(84).jpg" class="img-fluid"
+            alt="">
+          <a href="">
+            <div class="mask rgba-white-light"></div>
+          </a>
+        </div>
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
+  
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+  
+      <!-- Grid row -->
+      <div class="row mt-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+  
+          <!-- Content -->
+          <h6 class="text-uppercase font-weight-bold">TravelSense</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>Planning a trip today can be confusing and time consuming. A travel advisor not only arranges the various modes of transportation, but may also be able to save you money with early booking discounts, special fares, hotel deals and travel advisories.</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+      
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+  
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Social Network</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="https://www.facebook.com/mdfahimur.rosid/"><b>facebook</b></a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/f_a_h_i_m_ur/?hl=en"><b>Instagram</b></a>
+          </p>
+          <p>
+            <a href="https://github.com/fahim-01"><b>GitHub</b></a>
+          </p>
+          <p>
+            <a href="/about"><b>About Us</b></a>
+          </p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+  
+          <!-- Links -->
+          <a href="/contact.html"><b>Contact Us</b></h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p> <b>Eastern Plaza, Gulshan, Dhaka</b></p>
+          <p><b>fahim.sust.edu@gmail.com </b></p>
+          <p><b> +8801778346462</b></p>
+          
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+    
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://www.facebook.com/mdfahimur.rosid/"> Fahimur Rashid</a>
+    </div>
+    <!-- Copyright -->
+</div>
+
+  </footer>
+  <!-- Footer -->
+  
+{% endblock %} 
+{% block js %}
+<script>
+{% if thank %}
+alert('Thanks for contacting us. We will get back to You soon!');
+
+document.location = "/";
+{% endif %}
+</script>
+{% endblock %} 
